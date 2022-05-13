@@ -1,38 +1,20 @@
 ---
-## Front matter
-title: "Шаблон отчёта по лабораторной работе"
-subtitle: "Простейший вариант"
-author: "Дмитрий Сергеевич Кулябов"
-
-## Generic otions
+# Front matter
 lang: ru-RU
+title: "Лабораторная работа 8"
+subtitle: "Текстовой редактор vi."
+author: "Шеожев Аслан Аскерович"
+
+# Formatting
 toc-title: "Содержание"
-
-## Bibliography
-bibliography: bib/cite.bib
-csl: pandoc/csl/gost-r-7-0-5-2008-numeric.csl
-
-## Pdf output format
 toc: true # Table of contents
-toc-depth: 2
-lof: true # List of figures
-lot: true # List of tables
+toc_depth: 2
 fontsize: 12pt
 linestretch: 1.5
-papersize: a4
+papersize: a4paper
 documentclass: scrreprt
-## I18n polyglossia
-polyglossia-lang:
-  name: russian
-  options:
-	- spelling=modern
-	- babelshorthands=true
-polyglossia-otherlangs:
-  name: english
-## I18n babel
-babel-lang: russian
-babel-otherlangs: english
-## Fonts
+polyglossia-lang: russian
+polyglossia-otherlangs: english
 mainfont: PT Serif
 romanfont: PT Serif
 sansfont: PT Sans
@@ -40,80 +22,113 @@ monofont: PT Mono
 mainfontoptions: Ligatures=TeX
 romanfontoptions: Ligatures=TeX
 sansfontoptions: Ligatures=TeX,Scale=MatchLowercase
-monofontoptions: Scale=MatchLowercase,Scale=0.9
-## Biblatex
-biblatex: true
-biblio-style: "gost-numeric"
-biblatexoptions:
-  - parentracker=true
-  - backend=biber
-  - hyperref=auto
-  - language=auto
-  - autolang=other*
-  - citestyle=gost-numeric
-## Pandoc-crossref LaTeX customization
-figureTitle: "Рис."
-tableTitle: "Таблица"
-listingTitle: "Листинг"
-lofTitle: "Список иллюстраций"
-lotTitle: "Список таблиц"
-lolTitle: "Листинги"
-## Misc options
+monofontoptions: Scale=MatchLowercase
 indent: true
+pdf-engine: lualatex
 header-includes:
-  - \usepackage{indentfirst}
+  - \linepenalty=10 # the penalty added to the badness of each line within a paragraph (no associated penalty node) Increasing the value makes tex try to have fewer lines in the paragraph.
+  - \interlinepenalty=0 # value of the penalty (node) added after each line of a paragraph.
+  - \hyphenpenalty=50 # the penalty for line breaking at an automatically inserted hyphen
+  - \exhyphenpenalty=50 # the penalty for line breaking at an explicit hyphen
+  - \binoppenalty=700 # the penalty for breaking a line at a binary operator
+  - \relpenalty=500 # the penalty for breaking a line at a relation
+  - \clubpenalty=150 # extra penalty for breaking after first line of a paragraph
+  - \widowpenalty=150 # extra penalty for breaking before last line of a paragraph
+  - \displaywidowpenalty=50 # extra penalty for breaking before last line before a display math
+  - \brokenpenalty=100 # extra penalty for page breaking after a hyphenated line
+  - \predisplaypenalty=10000 # penalty for breaking before a display
+  - \postdisplaypenalty=0 # penalty for breaking after a display
+  - \floatingpenalty = 20000 # penalty for splitting an insertion (can only be split footnote in standard LaTeX)
+  - \raggedbottom # or \flushbottom
   - \usepackage{float} # keep figures where there are in the text
   - \floatplacement{figure}{H} # keep figures where there are in the text
 ---
 
-# Цель работы
+# Отчет по лабораторной работе №8.
+### Работу выполнил Шеожев Аслан Аскерович. 
 
-Здесь приводится формулировка цели лабораторной работы. Формулировки
-цели для каждой лабораторной работы приведены в методических
-указаниях.
+## Цель работы:
 
-Цель данного шаблона --- максимально упростить подготовку отчётов по
-лабораторным работам.  Модифицируя данный шаблон, студенты смогут без
-труда подготовить отчёт по лабораторным работам, а также познакомиться
-с основными возможностями разметки Markdown.
+Познакомиться с операционной системой Linux. Получить практические навыки работы с редактором vi, установленным по умолчанию практически во всех дистрибутивах.
 
-# Задание
+## Ход работы:
 
-Здесь приводится описание задания в соответствии с рекомендациями
-методического пособия и выданным вариантом.
+### В скриншотах по итогу прикрепленны конечный вид vi и командной строки (Рис. 1-2).
 
-# Теоретическое введение
+1. Создал каталог с именем ~/work/os/lab06.
+2. Перешел во вновь созданный каталог.
+3. Вызвал vi и создайте файл hello.sh
+4. Нажал клавишу i и ввел текст из условия.
+5. Нажал клавишу Esc для перехода в командный режим после завершения ввода текста.
+6. Нажал : для перехода в режим последней строки и внизу экрана появилось приглашение в виде двоеточия.
+7. Нажал w (записать) и q (выйти), а затем нажал клавишу Enter для сохранения текста и завершения работы.
+8. Сделал файл исполняемым
+9. Вызвал vi на редактирование файла
+10. Установил курсор в конец слова HELL второй строки.
+11. Перешел в режим вставки и заменил на HELLO. Нажпл Esc для возврата в командный режим.
+12. Установил курсор на четвертую строку и стер слово LOCAL.
+13. Перешел в режим вставки и набрал текст из условия, нажал Esc для возврата в командный режим.
+14. Установил курсор на последней строке файла. Вставил после неё строку, содержащую текст: echo $HELLO.
+15. Нажал Esc для перехода в командный режим.
+16. Удалил последнюю строку.
+17. Ввел команду отмены изменений u для отмены последней команды.
+18. Ввел символ : для перехода в режим последней строки. Записал произведённые изменения и вышел из vi.
+![Рис. 1 командная строка по итогу](image/1.jpg)
 
-Здесь описываются теоретические аспекты, связанные с выполнением работы.
+Рис. 1 командная строка по итогу
 
-Например, в табл. [-@tbl:std-dir] приведено краткое описание стандартных каталогов Unix.
+![Рис. 2 файл по итогу](image/2.jpg)
 
-: Описание некоторых каталогов файловой системы GNU Linux {#tbl:std-dir}
+Рис. 2 файл по итогу
 
-| Имя каталога | Описание каталога                                                                                                          |
-|--------------|----------------------------------------------------------------------------------------------------------------------------|
-| `/`          | Корневая директория, содержащая всю файловую                                                                               |
-| `/bin `      | Основные системные утилиты, необходимые как в однопользовательском режиме, так и при обычной работе всем пользователям     |
-| `/etc`       | Общесистемные конфигурационные файлы и файлы конфигурации установленных программ                                           |
-| `/home`      | Содержит домашние директории пользователей, которые, в свою очередь, содержат персональные настройки и данные пользователя |
-| `/media`     | Точки монтирования для сменных носителей                                                                                   |
-| `/root`      | Домашняя директория пользователя  `root`                                                                                   |
-| `/tmp`       | Временные файлы                                                                                                            |
-| `/usr`       | Вторичная иерархия для данных пользователя                                                                                 |
+## Вывод:
 
-Более подробно об Unix см. в [@gnu-doc:bash;@newham:2005:bash;@zarrelli:2017:bash;@robbins:2013:bash;@tannenbaum:arch-pc:ru;@tannenbaum:modern-os:ru].
+Я познакомился с операционной системой Linux. Получил практические навыки работы с редактором vi, установленным по умолчанию практически во всех дистрибутивах.
 
-# Выполнение лабораторной работы
+## Контрольные вопросы:
 
-Описываются проведённые действия, в качестве иллюстрации даётся ссылка на иллюстрацию (рис. [-@fig:001])
+1. В редакторе vi есть два основных режима: командный режим и режим вставки. По умолчанию работа начинается в командном режиме.
 
-![Название рисунка](image/placeimg_800_600_tech.jpg){ #fig:001 width=70% }
+2. в командном режиме набрать q или q! и нажать enter
 
-# Выводы
+3. 
+* 0 (ноль) — переход в начало строки;
 
-Здесь кратко описываются итоги проделанной работы.
+* $ — переход в конец строки;
 
-# Список литературы{.unnumbered}
+* G — переход в конец файла;
 
-::: {#refs}
-:::
+* n G — переход на строку с номером n.
+
+5. 
+* G - переход в конец файла
+* 1 G - переход в начало файла
+6. 
+    – : n,m d — удалить строки с n по m;
+
+    – : i,j m k — переместить строки с i по j, начиная со строки k;
+
+    – : i,j t k — копировать строки с i по j в строку k;
+
+    – : i,j w имя-файла — записать строки с i по j в файл с именем имя-файла.
+
+    – : w — записать изменённый текст в файл, не выходя из vi;
+
+    – : w имя-файла — записать изменённый текст в новый файл с именем имя-файла;
+
+    – : w ! имя-файла — записать изменённый текст в файл с именем имя-файла;
+
+    – : w q — записать изменения в файл и выйти из vi;
+
+    – : q — выйти из редактора vi;
+
+    – : q ! — выйти из редактора без записи;
+
+    – : e ! — вернуться в командный режим, отменив все изменения, произведённые со времени последней записи.
+
+7. c$ $
+
+8. 
+* esc -> u -> enter
+
+12. В командном режиме нельзя редактировать текст
