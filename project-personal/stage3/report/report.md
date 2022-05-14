@@ -1,38 +1,20 @@
 ---
-## Front matter
-title: "Шаблон отчёта по лабораторной работе"
-subtitle: "Простейший вариант"
-author: "Дмитрий Сергеевич Кулябов"
-
-## Generic otions
+# Front matter
 lang: ru-RU
+title: "Выполнение 3 этапа индивидуального проекта"
+subtitle: "Добавить к сайту достижения."
+author: "Шеожев Аслан Аскерович"
+
+# Formatting
 toc-title: "Содержание"
-
-## Bibliography
-bibliography: bib/cite.bib
-csl: pandoc/csl/gost-r-7-0-5-2008-numeric.csl
-
-## Pdf output format
 toc: true # Table of contents
-toc-depth: 2
-lof: true # List of figures
-lot: true # List of tables
+toc_depth: 2
 fontsize: 12pt
 linestretch: 1.5
-papersize: a4
+papersize: a4paper
 documentclass: scrreprt
-## I18n polyglossia
-polyglossia-lang:
-  name: russian
-  options:
-	- spelling=modern
-	- babelshorthands=true
-polyglossia-otherlangs:
-  name: english
-## I18n babel
-babel-lang: russian
-babel-otherlangs: english
-## Fonts
+polyglossia-lang: russian
+polyglossia-otherlangs: english
 mainfont: PT Serif
 romanfont: PT Serif
 sansfont: PT Sans
@@ -40,80 +22,62 @@ monofont: PT Mono
 mainfontoptions: Ligatures=TeX
 romanfontoptions: Ligatures=TeX
 sansfontoptions: Ligatures=TeX,Scale=MatchLowercase
-monofontoptions: Scale=MatchLowercase,Scale=0.9
-## Biblatex
-biblatex: true
-biblio-style: "gost-numeric"
-biblatexoptions:
-  - parentracker=true
-  - backend=biber
-  - hyperref=auto
-  - language=auto
-  - autolang=other*
-  - citestyle=gost-numeric
-## Pandoc-crossref LaTeX customization
-figureTitle: "Рис."
-tableTitle: "Таблица"
-listingTitle: "Листинг"
-lofTitle: "Список иллюстраций"
-lotTitle: "Список таблиц"
-lolTitle: "Листинги"
-## Misc options
+monofontoptions: Scale=MatchLowercase
 indent: true
+pdf-engine: lualatex
 header-includes:
-  - \usepackage{indentfirst}
+  - \linepenalty=10 # the penalty added to the badness of each line within a paragraph (no associated penalty node) Increasing the value makes tex try to have fewer lines in the paragraph.
+  - \interlinepenalty=0 # value of the penalty (node) added after each line of a paragraph.
+  - \hyphenpenalty=50 # the penalty for line breaking at an automatically inserted hyphen
+  - \exhyphenpenalty=50 # the penalty for line breaking at an explicit hyphen
+  - \binoppenalty=700 # the penalty for breaking a line at a binary operator
+  - \relpenalty=500 # the penalty for breaking a line at a relation
+  - \clubpenalty=150 # extra penalty for breaking after first line of a paragraph
+  - \widowpenalty=150 # extra penalty for breaking before last line of a paragraph
+  - \displaywidowpenalty=50 # extra penalty for breaking before last line before a display math
+  - \brokenpenalty=100 # extra penalty for page breaking after a hyphenated line
+  - \predisplaypenalty=10000 # penalty for breaking before a display
+  - \postdisplaypenalty=0 # penalty for breaking after a display
+  - \floatingpenalty = 20000 # penalty for splitting an insertion (can only be split footnote in standard LaTeX)
+  - \raggedbottom # or \flushbottom
   - \usepackage{float} # keep figures where there are in the text
   - \floatplacement{figure}{H} # keep figures where there are in the text
 ---
 
-# Цель работы
+# Выполнение 3 этапа индивидуального проекта.
+### Работу выполнил Шеожев Аслан Аскерович. 
 
-Здесь приводится формулировка цели лабораторной работы. Формулировки
-цели для каждой лабораторной работы приведены в методических
-указаниях.
+## Цель работы:
 
-Цель данного шаблона --- максимально упростить подготовку отчётов по
-лабораторным работам.  Модифицируя данный шаблон, студенты смогут без
-труда подготовить отчёт по лабораторным работам, а также познакомиться
-с основными возможностями разметки Markdown.
+Добавить к сайту достижения.
 
-# Задание
+## Ход работы:
 
-Здесь приводится описание задания в соответствии с рекомендациями
-методического пособия и выданным вариантом.
+* Добавил информацию о навыках (Skills) (Рис. 1).
 
-# Теоретическое введение
+![Рис. 1 Skills](image/1.jpg)
+Рис. 1 Skills
 
-Здесь описываются теоретические аспекты, связанные с выполнением работы.
+* Добавил информацию об опыте (Experience) (Рис. 2).
 
-Например, в табл. [-@tbl:std-dir] приведено краткое описание стандартных каталогов Unix.
+![Рис. 2 Experience](image/2.jpg)
+Рис. 2 Experience
 
-: Описание некоторых каталогов файловой системы GNU Linux {#tbl:std-dir}
+* Добавил информацию о достижениях (Accomplishments) (Рис. 3).
 
-| Имя каталога | Описание каталога                                                                                                          |
-|--------------|----------------------------------------------------------------------------------------------------------------------------|
-| `/`          | Корневая директория, содержащая всю файловую                                                                               |
-| `/bin `      | Основные системные утилиты, необходимые как в однопользовательском режиме, так и при обычной работе всем пользователям     |
-| `/etc`       | Общесистемные конфигурационные файлы и файлы конфигурации установленных программ                                           |
-| `/home`      | Содержит домашние директории пользователей, которые, в свою очередь, содержат персональные настройки и данные пользователя |
-| `/media`     | Точки монтирования для сменных носителей                                                                                   |
-| `/root`      | Домашняя директория пользователя  `root`                                                                                   |
-| `/tmp`       | Временные файлы                                                                                                            |
-| `/usr`       | Вторичная иерархия для данных пользователя                                                                                 |
+![Рис. 3 Accomplishments](image/3.jpg)
+Рис. 3 Accomplishments
 
-Более подробно об Unix см. в [@gnu-doc:bash;@newham:2005:bash;@zarrelli:2017:bash;@robbins:2013:bash;@tannenbaum:arch-pc:ru;@tannenbaum:modern-os:ru].
+### Сделал пост по прошедшей неделе (Рис. 4).
 
-# Выполнение лабораторной работы
+![Рис. 4 Предыдущая неделя](image/4.jpg)
+Рис. 4 Предыдущая неделя
 
-Описываются проведённые действия, в качестве иллюстрации даётся ссылка на иллюстрацию (рис. [-@fig:001])
+### Добавил пост на тему "Языки разметки. LaTeX." (Рис. 5).
 
-![Название рисунка](image/placeimg_800_600_tech.jpg){ #fig:001 width=70% }
+![Рис. 5 Языки разметки. LaTeX.](image/5.jpg)
+Рис. 5 Языки разметки. LaTeX.
 
-# Выводы
+## Вывод:
 
-Здесь кратко описываются итоги проделанной работы.
-
-# Список литературы{.unnumbered}
-
-::: {#refs}
-:::
+Мы добавили к сайту достижения.
