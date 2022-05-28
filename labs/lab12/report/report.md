@@ -1,38 +1,20 @@
 ---
-## Front matter
-title: "Шаблон отчёта по лабораторной работе"
-subtitle: "Простейший вариант"
-author: "Дмитрий Сергеевич Кулябов"
-
-## Generic otions
+# Front matter
 lang: ru-RU
+title: "Лабораторная работа 12"
+subtitle: " Программирование в командном процессоре ОС UNIX. Расширенное программирование."
+author: "Шеожев Аслан Аскерович"
+
+# Formatting
 toc-title: "Содержание"
-
-## Bibliography
-bibliography: bib/cite.bib
-csl: pandoc/csl/gost-r-7-0-5-2008-numeric.csl
-
-## Pdf output format
 toc: true # Table of contents
-toc-depth: 2
-lof: true # List of figures
-lot: true # List of tables
+toc_depth: 2
 fontsize: 12pt
 linestretch: 1.5
-papersize: a4
+papersize: a4paper
 documentclass: scrreprt
-## I18n polyglossia
-polyglossia-lang:
-  name: russian
-  options:
-	- spelling=modern
-	- babelshorthands=true
-polyglossia-otherlangs:
-  name: english
-## I18n babel
-babel-lang: russian
-babel-otherlangs: english
-## Fonts
+polyglossia-lang: russian
+polyglossia-otherlangs: english
 mainfont: PT Serif
 romanfont: PT Serif
 sansfont: PT Sans
@@ -40,80 +22,67 @@ monofont: PT Mono
 mainfontoptions: Ligatures=TeX
 romanfontoptions: Ligatures=TeX
 sansfontoptions: Ligatures=TeX,Scale=MatchLowercase
-monofontoptions: Scale=MatchLowercase,Scale=0.9
-## Biblatex
-biblatex: true
-biblio-style: "gost-numeric"
-biblatexoptions:
-  - parentracker=true
-  - backend=biber
-  - hyperref=auto
-  - language=auto
-  - autolang=other*
-  - citestyle=gost-numeric
-## Pandoc-crossref LaTeX customization
-figureTitle: "Рис."
-tableTitle: "Таблица"
-listingTitle: "Листинг"
-lofTitle: "Список иллюстраций"
-lotTitle: "Список таблиц"
-lolTitle: "Листинги"
-## Misc options
+monofontoptions: Scale=MatchLowercase
 indent: true
+pdf-engine: lualatex
 header-includes:
-  - \usepackage{indentfirst}
+  - \linepenalty=10 # the penalty added to the badness of each line within a paragraph (no associated penalty node) Increasing the value makes tex try to have fewer lines in the paragraph.
+  - \interlinepenalty=0 # value of the penalty (node) added after each line of a paragraph.
+  - \hyphenpenalty=50 # the penalty for line breaking at an automatically inserted hyphen
+  - \exhyphenpenalty=50 # the penalty for line breaking at an explicit hyphen
+  - \binoppenalty=700 # the penalty for breaking a line at a binary operator
+  - \relpenalty=500 # the penalty for breaking a line at a relation
+  - \clubpenalty=150 # extra penalty for breaking after first line of a paragraph
+  - \widowpenalty=150 # extra penalty for breaking before last line of a paragraph
+  - \displaywidowpenalty=50 # extra penalty for breaking before last line before a display math
+  - \brokenpenalty=100 # extra penalty for page breaking after a hyphenated line
+  - \predisplaypenalty=10000 # penalty for breaking before a display
+  - \postdisplaypenalty=0 # penalty for breaking after a display
+  - \floatingpenalty = 20000 # penalty for splitting an insertion (can only be split footnote in standard LaTeX)
+  - \raggedbottom # or \flushbottom
   - \usepackage{float} # keep figures where there are in the text
   - \floatplacement{figure}{H} # keep figures where there are in the text
 ---
 
-# Цель работы
+# Отчет по лабораторной работе №12.
+### Работу выполнил Шеожев Аслан Аскерович. 
 
-Здесь приводится формулировка цели лабораторной работы. Формулировки
-цели для каждой лабораторной работы приведены в методических
-указаниях.
+## Цель работы:
 
-Цель данного шаблона --- максимально упростить подготовку отчётов по
-лабораторным работам.  Модифицируя данный шаблон, студенты смогут без
-труда подготовить отчёт по лабораторным работам, а также познакомиться
-с основными возможностями разметки Markdown.
+* Изучить основы программирования в оболочке ОС UNIX. Научиться писать более сложные командные файлы с использованием логических управляющих конструкций и циклов.
 
-# Задание
+## Ход работы:
 
-Здесь приводится описание задания в соответствии с рекомендациями
-методического пособия и выданным вариантом.
+1. Написал командный файл, реализующий упрощённый механизм семафоров. Командный файл в течение некоторого времени t1 дожидался освобождения ресурса, выдавая об этом сообщение, а дождавшись его освобождения, использовал его в течение некоторого времени t2<>t1, также выдавая информацию о том, что ресурс используется соответствующим командным файлом (процессом). Запустил командный файл в одном виртуальном терминале в фоновом режиме, перенаправив его вывод в другой (> /dev/tty#, где # — номер терминала куда перенаправляется вывод), в котором также запущен этот файл, но не фоновом, а в привилегированном режиме. Доработал программу так, чтобы появилась возможность взаимодействия трёх и более процессов. (Рис. 1-2)
 
-# Теоретическое введение
+![Рис. 1 (Командный файл для 1 пункта)](image/1.jpg) 
 
-Здесь описываются теоретические аспекты, связанные с выполнением работы.
+Рис. 1 (Командный файл для 1 пункта)
 
-Например, в табл. [-@tbl:std-dir] приведено краткое описание стандартных каталогов Unix.
+![Рис. 2 (Результат ввывода 1 программы)](image/2.jpg) 
 
-: Описание некоторых каталогов файловой системы GNU Linux {#tbl:std-dir}
+Рис. 2 (Результат вывода 1 программы)
 
-| Имя каталога | Описание каталога                                                                                                          |
-|--------------|----------------------------------------------------------------------------------------------------------------------------|
-| `/`          | Корневая директория, содержащая всю файловую                                                                               |
-| `/bin `      | Основные системные утилиты, необходимые как в однопользовательском режиме, так и при обычной работе всем пользователям     |
-| `/etc`       | Общесистемные конфигурационные файлы и файлы конфигурации установленных программ                                           |
-| `/home`      | Содержит домашние директории пользователей, которые, в свою очередь, содержат персональные настройки и данные пользователя |
-| `/media`     | Точки монтирования для сменных носителей                                                                                   |
-| `/root`      | Домашняя директория пользователя  `root`                                                                                   |
-| `/tmp`       | Временные файлы                                                                                                            |
-| `/usr`       | Вторичная иерархия для данных пользователя                                                                                 |
+2. Реализовал команду man с помощью командного файла. Изучил содержимое каталога /usr/share/man/man1. В нем находятся архивы текстовых файлов, содержащих справку по большинству установленных в системе программ и команд. Каждый архив можно открыть командой less сразу же просмотрев содержимое справки. Командный файл должен получал в виде аргумента командной строки название команды и в виде результата выдавать справку об этой команде или сообщение об отсутствии справки, если соответствующего файла нет в каталоге man1. (Рис. 3-4)
 
-Более подробно об Unix см. в [@gnu-doc:bash;@newham:2005:bash;@zarrelli:2017:bash;@robbins:2013:bash;@tannenbaum:arch-pc:ru;@tannenbaum:modern-os:ru].
+![Рис. 3 (Командный файл для 2 пункта)](image/3.jpg) 
 
-# Выполнение лабораторной работы
+Рис. 3 (Командный файл для 2 пункта)
 
-Описываются проведённые действия, в качестве иллюстрации даётся ссылка на иллюстрацию (рис. [-@fig:001])
+![Рис. 4 (Результат ввывода 2 программы)](image/4.jpg) 
 
-![Название рисунка](image/placeimg_800_600_tech.jpg){ #fig:001 width=70% }
+Рис. 4 (Результат вывода 2 программы)
 
-# Выводы
+3. Используя встроенную переменную $RANDOM, написал командный файл, генерирующий случайную последовательность букв латинского алфавита. (Рис.5-6)
 
-Здесь кратко описываются итоги проделанной работы.
+![Рис.5 (Командный файл для 3 пункта)](image/5.jpg) 
 
-# Список литературы{.unnumbered}
+Рис. 5 (Командный файл для 3 пункта)
 
-::: {#refs}
-:::
+![Рис. 6 (Результат ввывода 3 программы)](image/6.jpg) 
+
+Рис. 6 (Результат вывода 3 программы)
+
+## Вывод:
+
+* Я изучил основы программирования в оболочке ОС UNIX. Научился писать более сложные командные файлы с использованием логических управляющих конструкций и циклов.
